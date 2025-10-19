@@ -1,10 +1,11 @@
+
 import { NextResponse } from 'next/server';
 
 export async function POST(req) {
-  const { password } = await req.json();
+  const { email, password } = await req.json();
 
-  // For simplicity, hardcode the admin password
-  if (password === process.env.ADMIN_PASSWORD) {
+  // For simplicity, hardcode the admin email and password
+  if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
     const res = NextResponse.json({ success: true });
 
     // Create the cookie (valid for 1 day)
